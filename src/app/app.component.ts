@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DynamicDatabaseService } from './services/dynamic-database.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Menu-Dinamico';
+  initialData: string[] = [];
+  constructor(private database: DynamicDatabaseService) {
+    this.initialData = this.database.rootLevelNodes.slice();
+  }
 }
